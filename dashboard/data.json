@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "n_d1": 101,
+    "n_d2": 1000,
+    "n_d3": 2000
+  },
+  "prevalence": {
+    "depression": 34.7,
+    "anxiety": 33.7,
+    "panic": 32.7
+  },
+  "any_distress": 63.4,
+  "treatment": 5.9,
+  "model_accuracy": {
+    "Logistic Regression": 79.4,
+    "Decision Tree": 76.5,
+    "KNN": 79.4
+  },
+  "depression_drivers": [
+    {
+      "feature": "marital",
+      "weight": 1.675
+    },
+    {
+      "feature": "anxiety",
+      "weight": 0.677
+    },
+    {
+      "feature": "gender",
+      "weight": -0.406
+    },
+    {
+      "feature": "age",
+      "weight": -0.349
+    },
+    {
+      "feature": "panic",
+      "weight": 0.312
+    },
+    {
+      "feature": "cgpa",
+      "weight": -0.19
+    }
+  ],
+  "r_study_exam": 0.825,
+  "exam_correlations": {
+    "study_hours_per_day": 0.825,
+    "mental_health_rating": 0.322,
+    "netflix_hours": -0.172,
+    "social_media_hours": -0.167,
+    "exercise_frequency": 0.16,
+    "sleep_hours": 0.122,
+    "attendance_percentage": 0.09,
+    "age": -0.009
+  },
+  "income_by_education": {
+    "graduate school": 146818,
+    "university": 145406,
+    "high school": 116368,
+    "other / unknown": 115068
+  }
+}
