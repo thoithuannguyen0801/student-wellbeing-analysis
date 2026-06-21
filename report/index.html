@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Wellbeing &amp; Success — Report</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{--ink:#10243E;--ink2:#1C3A5E;--paper:#F6F3EC;--card:#FFF;--signal:#E0533D;--teal:#2E7C84;--line:#D9D2C4;--muted:#5C6B7A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:0 24px}
+.mono{font-family:'IBM Plex Mono',monospace}
+header{background:var(--ink);color:var(--paper);padding:60px 0 44px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#F0A35E;margin-bottom:16px}
+h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(30px,5vw,46px);line-height:1.06;letter-spacing:-.01em}
+.meta{margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#9FB0C2;display:flex;gap:18px;flex-wrap:wrap}
+.nav{margin-top:22px}.nav a{display:inline-block;color:#fff;background:var(--teal);text-decoration:none;font-size:13px;padding:8px 16px;border-radius:999px;font-weight:500}
+article{padding:48px 0 70px}
+h2{font-family:'Fraunces',serif;font-weight:600;font-size:27px;margin:42px 0 4px;letter-spacing:-.01em}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--signal);text-transform:uppercase;letter-spacing:.14em}
+p{margin:14px 0;font-size:16px}.lead{font-size:18px;color:var(--ink2)}
+figure{margin:26px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+figure img{width:100%;border-radius:8px;display:block}
+figcaption{font-size:13px;color:var(--muted);margin-top:10px;font-family:'IBM Plex Mono',monospace}
+table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:var(--ink);color:#fff;font-weight:600;font-size:12.5px}
+td.num,th.num{text-align:right;font-family:'IBM Plex Mono',monospace}
+tr:last-child td{border-bottom:none}
+.callout{background:var(--card);border-left:4px solid var(--signal);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0}
+.callout.teal{border-left-color:var(--teal)} .callout strong{color:var(--signal)} .callout.teal strong{color:var(--teal)}
+ul{margin:14px 0 14px 22px}li{margin:7px 0}
+footer{border-top:1px solid var(--line);padding:26px 0 60px;color:var(--muted);font-size:13px}
+@media(max-width:600px){p,.lead{font-size:15px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="eyebrow">University project (DATA1002) · Analytical report</div>
+  <h1>Study habits, mental health, and what happens after graduation</h1>
+  <div class="meta"><span>Tony Nguyen</span><span>Python · scikit-learn</span><span>3 datasets · 3,101 records</span></div>
+  <div class="nav"><a href="../dashboard/index.html">→ Open the interactive dashboard</a></div>
+</div></header>
+
+<article><div class="wrap">
+  <p class="lead">Universities measure students mostly by grades. This project asks whether that is the right lens — bringing together three datasets on study habits, mental health, and socioeconomic outcomes to understand what really drives student success and wellbeing, and where support is missing.</p>
+
+  <span class="kicker">01 — Data</span>
+  <h2>Three datasets, three angles</h2>
+  <p>The analysis integrates three sources: a <strong>mental-health survey</strong> of 101 university students (depression, anxiety, panic, treatment-seeking, demographics); a <strong>habits-and-performance</strong> dataset of 1,000 students (study time, sleep, screen time, attendance, exam score); and a <strong>socioeconomic</strong> dataset of 2,000 adults (education and income). Each was cleaned with median imputation, label encoding and standardisation before analysis.</p>
+
+  <span class="kicker">02 — The academic engine</span>
+  <h2>Study time is the lever that matters</h2>
+  <p>Among the habits measured, daily study time has by far the strongest relationship with exam performance — a Pearson correlation of <strong>r = 0.825</strong>. Mental-health rating shows a modest positive link (r ≈ 0.32), while screen-time variables are weakly negative. Sleep and attendance barely register on their own.</p>
+  <figure><img src="../figures/study_vs_exam.png" alt="Study hours vs exam score"><figcaption>Fig 1 — Exam score rises steadily with daily study hours (r = 0.825, n = 1,000).</figcaption></figure>
+
+  <span class="kicker">03 — The wellbeing gap</span>
+  <h2>Common distress, rare treatment</h2>
+  <p>The survey tells a starker story. Roughly a third of students reported depression (34.7%), anxiety (33.7%) or panic attacks (32.7%); <strong>63%</strong> reported at least one. Yet only <strong>5.9%</strong> had sought help from a specialist — a gulf of more than ten to one between need and help-seeking.</p>
+  <figure><img src="../figures/prevalence_gap.png" alt="Prevalence vs treatment"><figcaption>Fig 2 — Distress is widespread; treatment-seeking is not (survey n = 101).</figcaption></figure>
+  <div class="callout"><strong>The strongest predictors of depression are not academic.</strong> A logistic model points to marital status and anxiety as the leading signals, while CGPA carries little weight. Screening students on grades alone would miss the group most at risk.</div>
+  <table>
+    <tr><th>Classifier</th><th class="num">Test accuracy</th></tr>
+    <tr><td>Logistic Regression</td><td class="num">79.4%</td></tr>
+    <tr><td>KNN (k=5)</td><td class="num">79.4%</td></tr>
+    <tr><td>Decision Tree (depth 4)</td><td class="num">76.5%</td></tr>
+  </table>
+  <p>Three classifiers were trained to predict depression from demographics and comorbid symptoms. On a held-out split they reach 76–79% accuracy — useful as a directional signal, though the small survey sample (n = 101) means these numbers are indicative rather than definitive.</p>
+
+  <span class="kicker">04 — The long-run stakes</span>
+  <h2>Why keeping students engaged pays off</h2>
+  <p>The socioeconomic data anchors why all of this matters. Mean income climbs sharply with education: postgraduate ($146.8k) and university ($145.4k) backgrounds sit roughly <strong>26%</strong> above high-school-only ($116.4k). The downstream payoff of helping students stay well and complete their studies is large.</p>
+  <figure><img src="../figures/income_by_education.png" alt="Income by education"><figcaption>Fig 3 — Mean income by education level (n = 2,000).</figcaption></figure>
+
+  <span class="kicker">05 — Recommendations</span>
+  <h2>Shift support from grades to wellbeing</h2>
+  <ul>
+    <li><strong>Protect study time</strong> — the single biggest driver of performance in the data.</li>
+    <li><strong>Close the treatment gap</strong> with low-barrier, proactive check-ins rather than waiting for students to self-refer.</li>
+    <li><strong>Look beyond CGPA</strong> — the at-risk group is defined by personal circumstances, not academic results.</li>
+  </ul>
+
+  <span class="kicker">06 — Limitations</span>
+  <h2>Reading the numbers honestly</h2>
+  <p>The three datasets describe different populations and are not linked at the individual level, so cross-dataset claims are contextual, not causal. The mental-health survey is small (n = 101) and self-reported, which inflates uncertainty in the prevalence and model figures. Correlation does not establish causation — study time and exam scores move together, but unmeasured factors (motivation, prior ability) plausibly drive both.</p>
+</div></article>
+
+<footer><div class="wrap">Student Wellbeing &amp; Success · Tony Nguyen · reproducible via <span class="mono">python src/analysis.py</span>. All figures and metrics generated from the cleaned datasets.</div></footer>
+</body>
+</html>
